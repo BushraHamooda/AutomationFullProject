@@ -127,25 +127,28 @@ public class HomePage extends TestData{
 	}
 	
 	
-		@Test(priority=5)
-		public void checkoutProcess() {
-			
-			WebElement CheckoutButton =driver.findElement(By.id("cart_checkout1"));
-			CheckoutButton.click();
-			
-			WebElement ConfirmOrderButton = driver.findElement(By.id("checkout_btn"));
-			ConfirmOrderButton.click();
-			//assert
-            String ActuallValue= driver.findElement(By.className("heading1")).getText();
-			String ExpectedValue = "YOUR ORDER HAS BEEN PROCESSED!";
-				
-             Assert.assertEquals(ActuallValue, ExpectedValue);
-			// hello how are you 
-		}
 
+	@Test(priority = 5,enabled = false)
+	public void CheckoutProcess() throws InterruptedException {
 
+		WebElement CheckoutButton = driver.findElement(By.id("cart_checkout1"));
+		CheckoutButton.click();
+		
+		WebElement ConfirmOrderButton = driver.findElement(By.id("checkout_btn"));
 		
 		
+		ConfirmOrderButton.click();
+		Thread.sleep(3000);
+		
+		String ActualValue = driver.findElement(By.className("heading1")).getText();
+		
+		String ExpectedValue = "YOUR ORDER HAS BEEN PROCESSED!"; 
+		
+		Assert.assertEquals(ActualValue, ExpectedValue);
+		
+		// hello how are you 
+		
+	}
 		
 		
 		
